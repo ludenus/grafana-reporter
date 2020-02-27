@@ -22,14 +22,6 @@ example docker-compose.yaml file
 ---
 version: "2"
 services:
-  postgres:
-    image: "postgres:11.1"
-    ports:
-      - 15432:5432
-    environment:
-      POSTGRES_DB: "qa"
-      POSTGRES_USER: "postgres"
-      POSTGRES_PASSWORD: "********"
 
   grafana:
     image: "grafana/grafana:6.6.1"
@@ -39,8 +31,6 @@ services:
       - ./grafana/provisioning/:/etc/grafana/provisioning/:ro
     environment:
       GF_SECURITY_ADMIN_PASSWORD: "********"
-    depends_on:
-      - postgres
 
   grafana-reporter:
     image: "ludenus/grafana-reporter:latest"
