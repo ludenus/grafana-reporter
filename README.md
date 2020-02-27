@@ -43,10 +43,12 @@ services:
       - postgres
 
   grafana-reporter:
-    build: grafana-reporter
+    image: "ludenus/grafana-reporter:latest"
     ports:
       - 18686:8686
     entrypoint: /entrypoint.sh
+    volumes:
+      - ./grafana-reporter/dashboard.json:/dashboard.json:ro
     environment:
       GRAFANA_HOST: "grafana"
       GRAFANA_PORT: "3000"
